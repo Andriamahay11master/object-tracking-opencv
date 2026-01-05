@@ -1,0 +1,4 @@
+Tracker,Average IoU under Noise,Success Rate 50 under Noise (%),Success Rate 30 under Noise (%)
+CSRT,0.48221665047030293,0.0,100.0
+KCF,0.32452434311228384,0.0,100.0
+MEDIANFLOW,0.21991362189458025,0.0,0.0
