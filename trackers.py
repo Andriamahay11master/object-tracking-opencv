@@ -31,6 +31,10 @@ def create_tracker(name):
     elif name == "MEDIANFLOW":
         return cv2.legacy.TrackerMedianFlow_create()
 
+    # Create a MIL tracker (robust but slower)
+    elif name == "MIL":
+         return cv2.TrackerMIL_create()
+    
     # Handle invalid tracker names
     else:
         raise ValueError("Unknown tracker")

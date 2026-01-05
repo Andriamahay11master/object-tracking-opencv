@@ -15,7 +15,7 @@ from metrics import iou
 # ------------------------------------------------------------
 
 # List of trackers to be evaluated
-TRACKERS = ["CSRT", "KCF", "MEDIANFLOW"]
+TRACKERS = ["CSRT", "KCF", "MEDIANFLOW", "MIL"]
 
 # Paths to selected OTB sequences and corresponding ground-truth files
 ARRAY_SEQ_PATH = [
