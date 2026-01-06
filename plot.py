@@ -120,3 +120,36 @@ plt.title("Success Rate 50 comparison across conditions")
 plt.legend()
 plt.grid(True, linestyle="--", alpha=0.5)
 plt.show()
+
+# Line plot comparing success rate (IoU > 0.3) across conditions
+
+plt.figure(figsize=(10, 6))
+
+plt.plot(
+    x - width,
+    df_baseline["Success Rate 30 (%)"],
+    label="Baseline",
+    marker='o'
+)
+
+plt.plot(
+    x,
+    df_occlusion["Success Rate 30 under Occlusion (%)"],
+    label="Occlusion",
+    marker='s'
+)
+
+plt.plot(
+    x + width,
+    df_noise["Success Rate 30 under Noise (%)"],
+    label="Noise",
+    marker='^'
+)
+
+plt.xticks(x, df_baseline["Tracker"])
+plt.xlabel("Tracker")
+plt.ylabel("Success Rate (%)")
+plt.title("Success Rate 30 comparison across conditions")
+plt.legend()
+plt.grid(True, linestyle="--", alpha=0.5)
+plt.show()
