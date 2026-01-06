@@ -15,20 +15,18 @@ df = pd.read_csv('results/baseline_results.csv')
 # Compute average IoU per tracker
 avg_iou = df.groupby(["Tracker"]).agg({"IoU": "mean"}).reset_index()
 
-# Define success based on IoU thresholds (0.5, 0.4, and 0.3)
+# Define success based on IoU thresholds (0.5 and 0.3)
 df["Success Rate 50"] = (df["IoU"] > 0.5).astype(int)
-df["Success Rate 40"] = (df["IoU"] > 0.4).astype(int)
 df["Success Rate 30"] = (df["IoU"] > 0.3).astype(int)
 
 # Compute success rate percentages per tracker
 success_rate_df = (
     df.groupby("Tracker")
-    .agg({"Success Rate 50": "mean", "Success Rate 40": "mean", "Success Rate 30": "mean"})
+    .agg({"Success Rate 50": "mean", "Success Rate 30": "mean"})
     .reset_index()
 )
 
 success_rate_df["Success Rate 50"] = success_rate_df["Success Rate 50"] * 100
-success_rate_df["Success Rate 40"] = success_rate_df["Success Rate 40"] * 100
 success_rate_df["Success Rate 30"] = success_rate_df["Success Rate 30"] * 100
 
 # Combine metrics into a summary table
@@ -36,16 +34,14 @@ summary = pd.DataFrame({
     "Tracker": avg_iou["Tracker"],
     "Average IoU": avg_iou["IoU"],
     "Success Rate 50 (%)": success_rate_df["Success Rate 50"],
-    "Success Rate 40 (%)": success_rate_df["Success Rate 40"],
     "Success Rate 30 (%)": success_rate_df["Success Rate 30"]
 })
 
 # Display summary statistics
 print(summary)
 print("Average IoU:", summary["Average IoU"].mean())
-print("Success Rate 50 (%):", summary["Success Rate 50 (%)"].mean())
-print("Success Rate 40 (%):", summary["Success Rate 40 (%)"].mean())
-print("Success Rate 30 (%):", summary["Success Rate 30 (%)"].mean())
+print("Average Success Rate 50 (%):", summary["Success Rate 50 (%)"].mean())
+print("Average Success Rate 30 (%):", summary["Success Rate 30 (%)"].mean())
 
 # Save baseline summary to CSV
 summary.to_csv("results/summary_baseline.csv", index=False)
@@ -62,18 +58,16 @@ df_occ = df_occ.groupby(["Tracker"]).agg({"IoU": "mean"}).reset_index()
 
 # Define success using the same IoU thresholds
 df_occ["Success Rate 50"] = (df_occ["IoU"] > 0.5).astype(int)
-df_occ["Success Rate 40"] = (df_occ["IoU"] > 0.4).astype(int)
 df_occ["Success Rate 30"] = (df_occ["IoU"] > 0.3).astype(int)
 
 # Compute success rate percentages
 sucess_rate_occ_df = (
     df.groupby("Tracker")
-    .agg({"Success Rate 50": "mean", "Success Rate 40": "mean", "Success Rate 30": "mean"})
+    .agg({"Success Rate 50": "mean", "Success Rate 30": "mean"})
     .reset_index()
 )
 
 sucess_rate_occ_df["Success Rate 50"] = sucess_rate_occ_df["Success Rate 50"] * 100
-sucess_rate_occ_df["Success Rate 40"] = sucess_rate_occ_df["Success Rate 40"] * 100
 sucess_rate_occ_df["Success Rate 30"] = sucess_rate_occ_df["Success Rate 30"] * 100
 
 # Create occlusion summary table
@@ -81,16 +75,14 @@ summary_occ = pd.DataFrame({
     "Tracker": df_occ["Tracker"],
     "Average IoU under Occlusion": df_occ["IoU"],
     "Success Rate 50 under Occlusion (%)": sucess_rate_occ_df["Success Rate 50"],
-    "Success Rate 40 under Occlusion (%)": sucess_rate_occ_df["Success Rate 40"],
     "Success Rate 30 under Occlusion (%)": sucess_rate_occ_df["Success Rate 30"]
 })
 
 # Display occlusion results
 print(summary_occ)
 print("Average IoU under Occlusion:", summary_occ["Average IoU under Occlusion"].mean())
-print("Success Rate 50 under Occlusion (%):", summary_occ["Success Rate 50 under Occlusion (%)"].mean())
-print("Success Rate 40 under Occlusion (%):", summary_occ["Success Rate 40 under Occlusion (%)"].mean())
-print("Success Rate 30 under Occlusion (%):", summary_occ["Success Rate 30 under Occlusion (%)"].mean())
+print("Average Success Rate 50 under Occlusion (%):", summary_occ["Success Rate 50 under Occlusion (%)"].mean())
+print("Average Success Rate 30 under Occlusion (%):", summary_occ["Success Rate 30 under Occlusion (%)"].mean())
 
 # Save occlusion summary
 summary_occ.to_csv("results/summary_occlusion.csv", index=False)
@@ -107,18 +99,16 @@ df_noise = df_noise.groupby(["Tracker"]).agg({"IoU": "mean"}).reset_index()
 
 # Define success thresholds
 df_noise["Success Rate 50"] = (df_noise["IoU"] > 0.5).astype(int)
-df_noise["Success Rate 40"] = (df_noise["IoU"] > 0.4).astype(int)
 df_noise["Success Rate 30"] = (df_noise["IoU"] > 0.3).astype(int)
 
 # Compute success rates
 sucess_rate_noise_df = (
     df_noise.groupby(["Tracker"])
-    .agg({"Success Rate 50": "mean", "Success Rate 40": "mean", "Success Rate 30": "mean"})
+    .agg({"Success Rate 50": "mean", "Success Rate 30": "mean"})
     .reset_index()
 )
 
 sucess_rate_noise_df["Success Rate 50"] = sucess_rate_noise_df["Success Rate 50"] * 100
-sucess_rate_noise_df["Success Rate 40"] = sucess_rate_noise_df["Success Rate 40"] * 100
 sucess_rate_noise_df["Success Rate 30"] = sucess_rate_noise_df["Success Rate 30"] * 100
 
 # Create noise summary table
@@ -126,16 +116,14 @@ summary_noise = pd.DataFrame({
     "Tracker": df_noise["Tracker"],
     "Average IoU under Noise": df_noise["IoU"],
     "Success Rate 50 under Noise (%)": sucess_rate_noise_df["Success Rate 50"],
-    "Success Rate 40 under Noise (%)": sucess_rate_noise_df["Success Rate 40"],
     "Success Rate 30 under Noise (%)": sucess_rate_noise_df["Success Rate 30"]
 })
 
 # Display noise results
 print(summary_noise)
 print("Average IoU under Noise:", summary_noise["Average IoU under Noise"].mean())
-print("Success Rate 50 under Noise (%):", summary_noise["Success Rate 50 under Noise (%)"].mean())
-print("Success Rate 40 under Noise (%):", summary_noise["Success Rate 40 under Noise (%)"].mean())
-print("Success Rate 30 under Noise (%):", summary_noise["Success Rate 30 under Noise (%)"].mean())
+print("Average Success Rate 50 under Noise (%):", summary_noise["Success Rate 50 under Noise (%)"].mean())
+print("Average Success Rate 30 under Noise (%):", summary_noise["Success Rate 30 under Noise (%)"].mean())
 
 # Save noise summary
 summary_noise.to_csv("results/summary_noise.csv", index=False)
