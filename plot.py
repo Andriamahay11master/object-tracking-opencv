@@ -67,13 +67,13 @@ plt.plot(
 )
 plt.plot(
     df_occlusion["Tracker"],
-    df_occlusion["Average IoU under occlusion"],
+    df_occlusion["Average IoU under Occlusion"],
     label="Occlusion",
     marker='s'
 )
 plt.plot(
     df_noise["Tracker"],
-    df_noise["Average IoU under noise"],
+    df_noise["Average IoU under Noise"],
     label="Noise",
     marker='^'
 )
