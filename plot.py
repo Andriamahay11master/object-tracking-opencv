@@ -19,7 +19,7 @@ plt.figure(figsize=(10, 6))
 plt.bar(
     df_baseline["Tracker"],
     df_baseline["Average IoU"],
-    color=['green', 'purple', 'orange']
+    color=['green', 'purple', 'orange','black']
 )
 plt.title("Average IoU – Baseline")
 plt.ylabel("Average IoU")
@@ -33,7 +33,7 @@ plt.figure(figsize=(10, 6))
 plt.bar(
     df_occlusion["Tracker"],
     df_occlusion["Average IoU under Occlusion"],
-    color=['green', 'purple', 'orange']
+    color=['green', 'purple', 'orange','black']
 )
 plt.title("Average IoU – Occlusion")
 plt.ylabel("Average IoU")
@@ -47,7 +47,7 @@ plt.figure(figsize=(10, 6))
 plt.bar(
     df_noise["Tracker"],
     df_noise["Average IoU under Noise"],
-    color=['green', 'purple', 'orange']
+    color=['green', 'purple', 'orange','black']
 )
 plt.title("Average IoU – Noise")
 plt.ylabel("Average IoU")
@@ -67,19 +67,19 @@ plt.plot(
 )
 plt.plot(
     df_occlusion["Tracker"],
-    df_occlusion["Average IoU under Occlusion"],
+    df_occlusion["Average IoU under occlusion"],
     label="Occlusion",
     marker='s'
 )
 plt.plot(
     df_noise["Tracker"],
-    df_noise["Average IoU under Noise"],
+    df_noise["Average IoU under noise"],
     label="Noise",
     marker='^'
 )
 plt.xlabel("Tracker")
 plt.ylabel("Average IoU")
-plt.title("Average IoU Comparison Across Conditions")
+plt.title("Average IoU comparison across conditions")
 plt.legend()
 plt.show()
 
@@ -104,6 +104,6 @@ plt.plot(
 )
 plt.xlabel("Tracker")
 plt.ylabel("Success Rate (%)")
-plt.title("Success Rate Comparison Across Conditions")
+plt.title("Success rate comparison across conditions")
 plt.legend()
 plt.show()
