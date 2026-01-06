@@ -50,22 +50,3 @@ def add_gaussian_noise(frame, sigma=15):
     # Add noise to the frame using OpenCV for proper saturation
     return cv2.add(frame, noise)
 
-
-def add_motion_blur(frame, k=9):
-    """
-    Applies horizontal motion blur to the input frame.
-
-    Parameters:
-    - frame: current video frame (numpy array)
-    - k: kernel size controlling blur intensity
-
-    This function is provided for potential future extensions
-    but is not used in the current experiments.
-    """
-    # Create a horizontal motion blur kernel
-    kernel = np.zeros((k, k))
-    kernel[k // 2, :] = 1
-    kernel /= k
-
-    # Apply the blur filter
-    return cv2.filter2D(frame, -1, kernel)
