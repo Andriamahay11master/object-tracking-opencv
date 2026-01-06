@@ -1,6 +1,6 @@
 ## Overview
 
-This project evaluates the robustness of classical visual object tracking algorithms under challenging visual conditions. Three OpenCV-based trackers (CSRT, KCF, and MedianFlow) are compared across multiple benchmark sequences under baseline, occlusion, and noise scenarios. Performance is evaluated using average IoU, success rate, and frames per second (FPS).
+This project evaluates the robustness of classical visual object tracking algorithms under challenging visual conditions. Three OpenCV-based trackers (CSRT, KCF, MedianFlow, and MIL) are compared across multiple benchmark sequences under baseline, occlusion, and noise scenarios. Performance is evaluated using average IoU, success rate, and frames per second (FPS).
 
 ## Arborescence of the project
 
@@ -9,8 +9,11 @@ project/
 ├── trackers.py # Tracker initialization
 ├── degradation.py # Occlusion and noise simulation
 ├── metrics.py # IoU computation
+├── analysis.py # Analysis of IoU and success rate
+├── plot.py # Plot average IoU and success rate
 ├── run_experiment.py # Main experiment script
 ├── results/ # CSV result files
+├── requirements.txt
 └── README.md
 
 ## Software requirements
