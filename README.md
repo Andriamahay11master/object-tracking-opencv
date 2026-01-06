@@ -19,7 +19,8 @@ project/
 -OpenCV 4.5+ (with contrib modules)
 -NumPy
 -Pandas
-(Command for installation in the requirements.txt)
+
+pip install -r requirements.txt
 
 ## Run the program
 
