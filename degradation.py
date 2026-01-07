@@ -50,3 +50,24 @@ def add_gaussian_noise(frame, sigma=15):
     # Add noise to the frame using OpenCV for proper saturation
     return cv2.add(frame, noise)
 
+def motion_blur(frame, kernel_size=15):
+    """
+    Applies motion blur to the input frame to simulate
+    motion-induced degradation.
+
+    Parameters:
+    - frame: current video frame (numpy array)
+    - kernel_size: size of the motion blur kernel
+
+    Returns a blurred frame with the same resolution.
+    """
+    # Create a motion blur kernel
+    kernel = np.zeros((kernel_size, kernel_size))
+    kernel[int((kernel_size - 1) / 2), :] = np.ones(kernel_size)
+    kernel = kernel / kernel_size
+
+    # Apply the motion blur using OpenCV filter2D
+    blurred_frame = cv2.filter2D(frame, -1, kernel)
+
+    return blurred_frame
+
